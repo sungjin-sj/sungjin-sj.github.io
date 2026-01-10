@@ -63,14 +63,45 @@
             font-weight: 600; 
         }
 
+        /* Carousel Styles */
+        .carousel-container { position: relative; width: 100%; margin-bottom: 20px; }
+        .carousel-slide { display: none; }
+        .carousel-slide.active { display: block; animation: fade 0.5s; }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            padding: 16px;
+            cursor: pointer;
+            font-size: 18px;
+            border-radius: 50%;
+            margin: 0 10px;
+        }
+        .carousel-btn:hover { background-color: rgba(0,0,0,0.8); }
+        .prev { left: 0; }
+        .next { right: 0; }
+        @keyframes fade { from {opacity: .4} to {opacity: 1} }
+
         footer { text-align: center; padding: 20px; font-size: 0.8rem; color: #9ca3af; border-top: 1px solid #eee; margin-top: 40px; }
+        .social-links { margin-top: 15px; }
+        .social-icon { width: 24px; height: 24px; fill: currentColor; transition: color 0.3s; color: #9ca3af; }
+        .social-icon:hover { color: #0077b5; }
+        nav .social-icon { color: var(--text-main); }
     </style>
 </head>
 <body>
 
     <nav>
         <a href="index.html" class="logo">PARK307</a>
-        <a href="index.html" class="back-link">← Back to Home</a>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <a href="index.html" class="back-link">← Back to Home</a>
+            <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn" style="display: flex;">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
     </nav>
 
     <header>
@@ -82,10 +113,23 @@
         
         <div class="detail-section">
             <h2>Project Video Demo</h2>
-            <div class="detail-media">
-                <video controls autoplay loop muted playsinline>
-                    <source src="videos/Adobe Express - IMG_3077.mp4" type="video/mp4">
-                </video>
+            <div class="carousel-container">
+                <div class="carousel-slide active">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <video controls autoplay loop muted playsinline>
+                            <source src="videos/Adobe Express - IMG_3077.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <div class="carousel-slide">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <video controls loop muted playsinline>
+                            <source src="videos/IMG_3100 2.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
             </div>
             <p class="description">A demonstration of my technical work using motion and interaction.</p>
         </div>
@@ -107,8 +151,7 @@
             <h2>System Architecture</h2>
             <p class="description">The system is divided into three main subsystems: The Mechanical Structure, The Control Electronics, and The Software Interface.</p>
             <div class="detail-media">
-                <!-- Placeholder for Block Diagram -->
-                <img src="https://via.placeholder.com/800x400?text=System+Block+Diagram" alt="System Block Diagram">
+                <img src="images/GroundStationBlockDiagram.png" alt="System Block Diagram">
             </div>
         </div>
 
@@ -130,7 +173,7 @@
             <p class="description">The electronics stack consists of an Arduino microcontroller driving two stepper drivers.</p>
             <div class="detail-media">
                 <!-- Placeholder for Wiring Diagram -->
-                <img src="https://via.placeholder.com/800x400?text=Wiring+Diagram+Placeholder" alt="Wiring Diagram">
+                <img src="images/IMG_3079.jpg" alt="Wiring Diagram">
             </div>
             <p class="description">Cable management was handled through the hollow center shaft to prevent tangling during 360-degree rotation.</p>
         </div>
@@ -148,6 +191,37 @@
 
     </div>
 
-    <footer><p>&copy; 2026 Sungjin Park. Hosted on GitHub Pages.</p></footer>
+    <footer>
+        <p>&copy; 2026 Sungjin Park. Hosted on GitHub Pages.</p>
+        <div class="social-links">
+            <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn">
+                <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+        </div>
+    </footer>
+
+    <script>
+        let slideIndex = 1;
+        
+        function moveSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("carousel-slide");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+                slides[i].classList.remove("active");
+                // Pause video when hidden
+                let video = slides[i].querySelector("video");
+                if(video) video.pause();
+            }
+            slides[slideIndex-1].style.display = "block";
+            slides[slideIndex-1].classList.add("active");
+        }
+    </script>
 </body>
 </html>
