@@ -57,6 +57,16 @@
             font-weight: 500;
         }
 
+        .hero-section {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 80px); /* Adjust 80px based on nav height */
+        }
+
+
         /* Hero Section */
         header {
             background-color: var(--bg-white); /* Back to original white */
@@ -439,9 +449,8 @@
     font-size: 0.9rem;
     font-weight: 500;
     transition: color 0.3s ease;
-    margin: 30px auto 0;
-    width: -moz-fit-content;
-    width: fit-content;
+    position: absolute;
+    bottom: 20px;
 }
 
 .scroll-down:hover {
