@@ -15,7 +15,7 @@
         <div class="nav-links">
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
-            <a href="#" onclick="openCVModal(); return false;">CV</a>
+            <a href="documents/Sungjin_Park_Resume.pdf" download="Sungjin_Park_Resume.pdf">CV</a>
             <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn"
                 style="display: flex;">
                 <svg class="social-icon" viewBox="0 0 24 24">
@@ -33,6 +33,18 @@
             </div>
             <h1>Sungjin Park</h1>
             <p class="subtitle">Aerospace Engineer</p>
+            <div class="button-container" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+                <div class="document-item">
+                    <span>Resume</span>
+                    <a href="documents/Sungjin_Park_Resume.pdf" target="_blank" class="btn-cv">Preview</a>
+                    <a href="documents/Sungjin_Park_Resume.pdf" download="Sungjin_Park_Resume.pdf" class="btn-cv">Download</a>
+                </div>
+                <div class="document-item">
+                    <span>Portfolio</span>
+                    <a href="documents/Portfolio.pdf" target="_blank" class="btn-cv">Preview</a>
+                    <a href="documents/Portfolio.pdf" download="Portfolio.pdf" class="btn-cv">Download</a>
+                </div>
+            </div>
 
         </section>
 
@@ -63,7 +75,7 @@
             Independent Engineering Projects</p>
         <div class="project-grid">
 
-            <a href="satellite-tracker.html" class="project-card" style="text-decoration: none; color: inherit;">
+            <div class="project-card" data-project-url="satellite-tracker.html">
                 <div class="media-container">
                     <video autoplay loop muted playsinline>
                         <source src="videos/Adobe Express - IMG_3077.mp4" type="video/mp4">
@@ -73,7 +85,7 @@
                     <h3>Satellite Tracker Project</h3>
                     <p>Click to view project details, video demos, and design mockups.</p>
                 </div>
-            </a>
+            </div>
 
             <div class="project-card">
                 <div class="media-container">
@@ -106,29 +118,82 @@
         </div>
     </footer>
 
-    <!-- CV Modal -->
-    <div id="cvModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeCVModal()">&times;</span>
-            <iframe src="documents/Sungjin_Park_Resume.pdf" class="pdf-frame" title="Resume Preview"></iframe>
-            <a href="documents/Sungjin_Park_Resume.pdf" download="Sungjin_Park_Resume.pdf" class="download-btn">Download
-                Resume</a>
+    <div id="lightbox-modal" class="modal">
+        <span class="close-modal" id="close-lightbox">&times;</span>
+        <div class="modal-content" id="lightbox-content">
+            <img id="lightbox-image" src="" alt="Lightbox Image">
+            <video id="lightbox-video" src="" controls></video>
         </div>
     </div>
 
     <script>
-        function openCVModal() {
-            document.getElementById("cvModal").style.display = "block";
-        }
-        function closeCVModal() {
-            document.getElementById("cvModal").style.display = "none";
-        }
-        window.onclick = function (event) {
-            if (event.target == document.getElementById("cvModal")) {
-                closeCVModal();
+        document.addEventListener("DOMContentLoaded", function () {
+            // Lightbox functionality
+            const lightbox = document.getElementById('lightbox-modal');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const lightboxVideo = document.getElementById('lightbox-video');
+            const closeLightbox = document.getElementById('close-lightbox');
+
+            document.querySelectorAll('.media-container').forEach(item => {
+                item.addEventListener('click', event => {
+                    const projectCard = item.closest('.project-card');
+                    if (projectCard && projectCard.hasAttribute('data-project-url')) {
+                        return;
+                    }
+                    event.stopPropagation(); // prevent the project card click event from firing
+                    const mediaElement = item.querySelector('img, video');
+                    if (!mediaElement) return;
+
+                    const src = mediaElement.getAttribute('src');
+                    if (mediaElement.tagName === 'IMG') {
+                        lightboxImage.src = src;
+                        lightboxImage.style.display = 'block';
+                        lightboxVideo.style.display = 'none';
+                    } else if (mediaElement.tagName === 'VIDEO') {
+                        // For videos, we need the source element's src
+                        const videoSource = mediaElement.querySelector('source');
+                        if (videoSource) {
+                            lightboxVideo.src = videoSource.getAttribute('src');
+                            lightboxVideo.style.display = 'block';
+                            lightboxImage.style.display = 'none';
+                            lightboxVideo.play();
+                        }
+                    }
+                    lightbox.style.display = 'flex';
+                });
+            });
+
+            document.querySelectorAll('.project-card').forEach(item => {
+                item.addEventListener('click', event => {
+                    const url = item.getAttribute('data-project-url');
+                    if (url) {
+                        window.location.href = url;
+                    }
+                });
+            });
+
+            function close() {
+                lightbox.style.display = 'none';
+                lightboxVideo.pause();
+                lightboxImage.src = '';
+                lightboxVideo.src = '';
             }
-        }
+
+            closeLightbox.addEventListener('click', close);
+            lightbox.addEventListener('click', e => {
+                if (e.target === lightbox) {
+                    close();
+                }
+            });
+
+            window.addEventListener('keydown', e => {
+                if (e.key === 'Escape' && lightbox.style.display !== 'none') {
+                    close();
+                }
+            });
+        });
     </script>
+
 </body>
 
 </html>

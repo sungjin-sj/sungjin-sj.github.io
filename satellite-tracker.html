@@ -1,20 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Satellite Tracker Project | Sungjin Park</title>
     <link rel="stylesheet" href="satellite-tracker.css">
 </head>
+
 <body>
 
     <nav>
         <a href="index.html" class="logo">SUNGJIN PARK</a>
         <div style="display: flex; align-items: center; gap: 20px;">
             <a href="index.html" class="back-link">← Back to Home</a>
-            <a href="#" onclick="openCVModal(); return false;" style="text-decoration: none; color: var(--text-main); font-weight: 500;">CV</a>
-            <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn" style="display: flex;">
-                <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            <a href="documents/Sungjin_Park_Resume.pdf" download="Sungjin_Park_Resume.pdf"
+                style="text-decoration: none; color: var(--text-main); font-weight: 500;">CV</a>
+            <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn"
+                style="display: flex;">
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
             </a>
         </div>
     </nav>
@@ -36,10 +43,32 @@
                 <span class="tech-tag">Stepper Motors</span>
             </div>
         </div>
-        
+
+        <div class="detail-section">
+            <h2>Project Overview</h2>
+            <p class="description">
+                The goal of this project was to design and prototype a high-precision, dual-axis (Azimuth-Elevation)
+                motorized ground station. The system is specifically engineered to track Sun-Synchronous Orbit (SSO)
+                satellites, which travel at approximately 7.5 km/s and require high-slew rate tracking and
+                precise pointing to maintain stable communication links. The structure was designed to support a heavy
+                1.5 kg Yagi antenna boom.
+            </p>
+            <h3>Functional Capabilities</h3>
+            <ul>
+                <li><strong>Real-time Tracking:</strong> Adjusts azimuth and elevation in real-time based on TLE data.
+                </li>
+                <li><strong>Autonomous Operation:</strong> Operates independently once coordinates are uploaded.</li>
+                <li><strong>High Precision:</strong> Utilizes stepper motors with micro-stepping for precise pointing
+                    accuracy.</li>
+            </ul>
+        </div>
+
         <div class="detail-section">
             <h2>Project Video Demo</h2>
             <div class="carousel-container">
+                <div class="carousel-control-left">
+                    <button class="carousel-btn prev">&#10094;</button>
+                </div>
                 <div class="carousel-slide active">
                     <div class="detail-media" style="margin-bottom: 0;">
                         <video controls autoplay loop muted playsinline>
@@ -54,115 +83,160 @@
                         </video>
                     </div>
                 </div>
-                <button class="carousel-btn prev" onclick="moveSlide(-1)">&#10094;</button>
-                <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
+                <div class="carousel-control-right">
+                    <button class="carousel-btn next">&#10095;</button>
+                </div>
             </div>
-            <p class="description">A demonstration of my technical work using motion and interaction.</p>
-        </div>
-
-        <div class="detail-section">
-            <h2>Project Requirements & Capabilities</h2>
-            <p class="description">
-                The primary goal of this project was to design and build a 2-axis satellite tracker capable of autonomously tracking low-earth orbit satellites.
-            </p>
-            <h3>Functional Capabilities</h3>
-            <ul>
-                <li><strong>Real-time Tracking:</strong> Adjusts azimuth and elevation in real-time based on TLE data.</li>
-                <li><strong>Autonomous Operation:</strong> Operates independently once coordinates are uploaded.</li>
-                <li><strong>High Precision:</strong> Utilizes stepper motors with micro-stepping for precise pointing accuracy.</li>
-            </ul>
         </div>
 
         <div class="detail-section">
             <h2>System Architecture</h2>
-            <p class="description">The system is divided into three main subsystems: The Mechanical Structure, The Control Electronics, and The Software Interface.</p>
+            <p class="description">The system is divided into three main subsystems: The Mechanical Structure, The
+                Control Electronics, and The Software Interface.</p>
             <div class="detail-media">
                 <img src="images/GroundStationBlockDiagram.png" alt="System Block Diagram">
             </div>
         </div>
 
         <div class="detail-section">
-            <h2>Mechanical Design & Assembly</h2>
-            <div class="detail-media">
-                <img src="images/IMG_3097.jpg" alt="Project Screenshot">
-            </div>
+            <h2>Mechanical Engineering & Design</h2>
+            <p class="description">
+                To ensure tracking stability under environmental disturbances, a comprehensive mechanical trade study
+                was performed to analyze bearing loads and required torque.
+            </p>
+            <h3></h3>
+            <ul>
+                <li><strong>Actuation System:</strong> NEMA-23 stepper motors were selected for both axes.
+                </li>
+                <li><strong>Gear Reduction:</strong> The system utilizes a 5:1 gear ratio for Azimuth and a 60:1 worm
+                    gear reduction ratio for Elevation.</li>
+                <li><strong>Prototyping:</strong> The assembly was designed using SolidWorks and fabricated through 3D
+                    printing to ensure structural integrity and rapid iteration.</li>
+            </ul>
             <h3>Design Choices</h3>
             <p class="description">
-                The structure was designed in Solidworks and fully 3D printed. A key design choice was the use of a balanced gimbal mechanism to minimize the torque required by the elevation motor.
+                The structure was designed in SolidWorks and fully 3D printed to allow for rapid iterative testing of
+                mechanical tolerances.
             </p>
+            <h3></h3>
+            <ul>
+                <li><strong>Non-Backdrivable Elevation Axis:</strong> A 60:1 worm gear reduction ratio was specifically
+                    chosen for the elevation axis. This ensures the system is not back-drivable, preventing
+                    environmental disturbances (such as high wind loads on the 1.5 kg Yagi antenna) from back-driving
+                    the
+                    motor and losing tracking alignment when powered down.
+                </li>
+            </ul>
             <h3>Assembly & Parts</h3>
-            <p class="description">The assembly features custom-designed gears and bearing mounts to ensure smooth rotation under load.</p>
+            <p class="description">The assembly features custom-designed gears and bearing mounts to ensure smooth
+                rotation under load.</p>
+            <h3></h3>
+            <ul>
+                <li><strong>Integrated Sensor Suite:</strong> A 6DoF IMU (Inertial Measurement Unit) is integrated via
+                    I2C to provide real-time magnetometer, accelerometer, and gyroscope feedback. This allows the system
+                    to verify its physical orientation against the calculated TLE coordinates.
+                </li>
+            </ul>
             <h3>CAD</h3>
             <p class="description">The CAD was done iteratively via Solidworks.</p>
+            <div class="carousel-container">
+                <div class="carousel-control-left">
+                    <button class="carousel-btn prev">&#10094;</button>
+                </div>
+                <div class="carousel-slide-image active">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <img src="images/draft_assembly ver3.PNG" alt="CAD Screenshot 1">
+                    </div>
+                </div>
+                <div class="carousel-slide-image">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <img src="images/draft_assembly ver3 2.PNG" alt="CAD Screenshot 2">
+                    </div>
+                </div>
+                <div class="carousel-control-right">
+                    <button class="carousel-btn next">&#10095;</button>
+                </div>
+            </div>
         </div>
 
         <div class="detail-section">
-            <h2>Electronics & Wiring</h2>
-            <p class="description">The electronics stack consists of an Arduino microcontroller driving two stepper drivers.</p>
-            <div class="detail-media" style="width: 100%; margin: 0 auto;">
-                <!-- Placeholder for Wiring Diagram -->
-                <img src="images/IMG_3079.jpg" alt="Wiring Diagram">
+            <h2>Electrical Architecture & Power Logic</h2>
+            <p class="description">The electrical system was designed with a focus on signal integrity and power
+                management.</p>
+            <h3></h3>
+            <ul>
+                <li><strong>Power Conversion:</strong> A dedicated power system converts 220 VAC to 24 VDC to power the
+                    Motorbank MSD-225 drivers.
+                </li>
+                <li><strong>Control Unit:</strong> An Arduino Mega 2560 manages the system logic.</li>
+                <li><strong>Signal Isolation:</strong> The controller handles 5V TTL logic for Pulse (PUL), Direction
+                    (DIR), and Enable (ENA) signals.</li>
+                <li><strong>Isolation Strategy:</strong> This architecture ensures complete electrical isolation between
+                    the high-power motors and the sensitive logic controllers to prevent interference.</li>
+            </ul>
+            <h3></h3>
+            <div class="carousel-container">
+                <div class="carousel-control-left">
+                    <button class="carousel-btn prev">&#10094;</button>
+                </div>
+                <div class="carousel-slide-image active">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <img src="images/GroundStationBlockDiagram.png" alt="GroundStationBlockDiagram">
+                    </div>
+                </div>
+                <div class="carousel-slide-image">
+                    <div class="detail-media" style="margin-bottom: 0;">
+                        <img src="images/IMG_3079.jpg" alt="Electricals">
+                    </div>
+                </div>
+                <div class="carousel-control-right">
+                    <button class="carousel-btn next">&#10095;</button>
+                </div>
             </div>
-            <p class="description">Cable management was handled through the hollow center shaft to prevent tangling during 360-degree rotation.</p>
         </div>
 
-        
+        <div class="detail-section">
+            <h2>Software Implementation & Control Tuning</h2>
+            <p class="description">The tracking intelligence is driven by embedded software developed in C++/Arduino.
+            </p>
+            <h3></h3>
+            <ul>
+                <li><strong>Pass Prediction:</strong> The software implements orbital propagation algorithms to parse
+                    Two-Line Element (TLE) data.
+                </li>
+                <li><strong>Real-Time Coordinates:</strong> By calculating real-time Azimuth and Elevation coordinates,
+                    the system autonomously predicts satellite passes and adjusts the antenna position.</li>
+                <li><strong>Dynamic Response:</strong> Jitter-free movement was achieved by iteratively tuning the
+                    control algorithms and motor micro-stepping.</li>
+            </ul>
+            <h3></h3>
+            <div class="detail-media" style="width: 100%; margin: 0 auto;">
+                <img src="images/IMG_3079.jpg" alt="Wiring Diagram">
+            </div>
+        </div>
 
+
+    </div>
+
+    <div id="imageModal" class="image-modal">
+        <span class="close-image-modal">&times;</span>
+        <img class="image-modal-content" id="modalImage">
     </div>
 
     <footer>
         <p>&copy; 2026 Sungjin Park. Hosted on GitHub Pages.</p>
         <div class="social-links">
             <a href="https://www.linkedin.com/in/sungjin-park-99111a199/" target="_blank" aria-label="LinkedIn">
-                <svg class="social-icon" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                <svg class="social-icon" viewBox="0 0 24 24">
+                    <path
+                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                </svg>
             </a>
         </div>
     </footer>
 
-    <!-- CV Modal -->
-    <div id="cvModal" class="modal">
-        <div class="modal-content">
-            <span class="close-modal" onclick="closeCVModal()">&times;</span>
-            <iframe src="documents/Sungjin_Park_Resume.pdf" class="pdf-frame" title="Resume Preview"></iframe>
-            <a href="documents/Sungjin_Park_Resume.pdf" download="Sungjin_Park_Resume.pdf" class="download-btn">Download Resume</a>
-        </div>
-    </div>
+    <script src="satellite-tracker.js" defer></script>
 
-    <script>
-        let slideIndex = 1;
-        
-        function moveSlide(n) {
-            showSlides(slideIndex += n);
-        }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("carousel-slide");
-            if (n > slides.length) {slideIndex = 1}
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-                slides[i].classList.remove("active");
-                // Pause video when hidden
-                let video = slides[i].querySelector("video");
-                if(video) video.pause();
-            }
-            slides[slideIndex-1].style.display = "block";
-            slides[slideIndex-1].classList.add("active");
-        }
-
-        // Modal Logic
-        function openCVModal() {
-            document.getElementById("cvModal").style.display = "block";
-        }
-        function closeCVModal() {
-            document.getElementById("cvModal").style.display = "none";
-        }
-        window.onclick = function(event) {
-            if (event.target == document.getElementById("cvModal")) {
-                closeCVModal();
-            }
-        }
-    </script>
 </body>
+
 </html>
