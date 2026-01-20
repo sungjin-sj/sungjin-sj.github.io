@@ -42,7 +42,7 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             background: #eee;
         }
-        .detail-media img, .detail-media video { width: 100%; display: block; }
+        .detail-media img, .detail-media video { width: 100%; display: block; cursor: pointer; }
         
         .description { font-size: 1.1rem; color: #4b5563; }
         
