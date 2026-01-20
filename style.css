@@ -136,6 +136,14 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
 
+        .project-card.no-lightbox {
+            cursor: default;
+        }
+
+        .project-card.no-lightbox .media-container {
+            cursor: default;
+        }
+
         .bento-container {
             display: grid;
             grid-template-columns: 1fr 2fr; /* Left side is smaller */
