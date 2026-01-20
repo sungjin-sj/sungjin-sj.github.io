@@ -88,13 +88,13 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card no-lightbox">
                 <div class="media-container">
-                    <img src="https://via.placeholder.com/400x250" alt="Placeholder">
+                    <img src="images/work-in-progress.png" alt="Work in Progress" style="object-fit: contain;">
                 </div>
                 <div class="project-info">
                     <h3>Future Project</h3>
-                    <p>Future Projects</p>
+                    <p>HIL Test Rig - 6 DOF Robot Arm</p>
                 </div>
             </div>
 
@@ -138,6 +138,9 @@
             document.querySelectorAll('.media-container').forEach(item => {
                 item.addEventListener('click', event => {
                     const projectCard = item.closest('.project-card');
+                    if (projectCard.classList.contains('no-lightbox')) {
+                        return;
+                    }
                     if (projectCard && projectCard.hasAttribute('data-project-url')) {
                         return;
                     }
